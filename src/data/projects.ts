@@ -15,12 +15,17 @@ import type { Project } from "./types";
 //     year: "2026",
 //     repoUrl: "https://github.com/you/repo",   // omit until the repo is public
 //     liveUrl: "https://your-demo.vercel.app",  // omit if there's no hosted demo
+//     challengesUrl: "https://github.com/you/repo/blob/main/CHALLENGES.md", // optional
 //     featured: true,
 //     status: "shipped",            // "shipped" | "in-progress"
 //   },
 //
 // Leaving repoUrl/liveUrl out is intentional and supported — the project
 // card shows a muted "Repo coming soon" pill instead of a dead link.
+//
+// For "challenges faced" write-ups: put them in the project's own repo as
+// CHALLENGES.md, not inline here — set challengesUrl to link to it. Keeps
+// the card scannable and keeps the full story next to the code it's about.
 // ─────────────────────────────────────────────────────────────────────────
 
 export const projects: Project[] = [
@@ -47,26 +52,7 @@ export const projects: Project[] = [
     status: "shipped",
     repoUrl: "https://github.com/Denyy2/tc-summarizer",
     liveUrl: "https://tc-summarizer.onrender.com/",
-    challenges: [
-      {
-        problem:
-          "The default model choice, gemini-3.6-flash, took 60-90s per request in testing — an unusable wait for a live demo, and long enough to exceed the server's default request timeout.",
-        solution:
-          "Isolated the cause by testing each request-config field separately and found the model spends an uncontrollable chunk of its token budget on internal \"thinking\" it doesn't support disabling. Switched to gemini-flash-lite-latest, which cut response time to 1-20s with no drop in summary quality.",
-      },
-      {
-        problem:
-          "The summarizer runs on one shared free-tier API key behind a public URL — one heavy visitor, or a bot, could burn the entire day's quota for everyone.",
-        solution:
-          "Added two rate-limit layers: a per-IP cap (10 requests/10 min) and a global daily cap (150/day) that only counts requests that actually reach the model, so invalid input doesn't waste quota. Verified live by firing 11 rapid requests and confirming the 11th got a real 429.",
-      },
-      {
-        problem:
-          "Needed to handle both real text PDFs and scanned/image PDFs through one upload endpoint, without adding heavy system dependencies that complicate deployment.",
-        solution:
-          "Used PyMuPDF to try direct text extraction per page first, falling back to Tesseract OCR only for pages with little/no extractable text. This avoided needing Poppler (the usual dependency for rendering PDF pages to images), so the Docker image only needs one extra system package.",
-      },
-    ],
+    challengesUrl: "https://github.com/Denyy2/tc-summarizer/blob/main/CHALLENGES.md",
   },
   {
     slug: "task-manager-api",
