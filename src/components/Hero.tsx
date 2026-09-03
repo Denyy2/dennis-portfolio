@@ -1,20 +1,7 @@
 import { site } from "@/data/site";
 import TerminalWindow from "./TerminalWindow";
-import TerminalScript, { type ScriptLine } from "./TerminalScript";
+import Terminal from "./Terminal";
 import TypedRole from "./TypedRole";
-
-const terminalScript: ScriptLine[] = [
-  { kind: "cmd", text: "whoami" },
-  { kind: "out", text: `${site.name} — ${site.role}`, tone: "accent" },
-  { kind: "blank" },
-  { kind: "cmd", text: "cat focus.txt" },
-  { kind: "out", text: "Transactional APIs · Auth & RBAC · Query & schema design" },
-  { kind: "blank" },
-  { kind: "cmd", text: "location --current" },
-  { kind: "out", text: site.location },
-];
-
-const terminalSrSummary = `${site.name} — ${site.role}. Focus areas: transactional APIs, auth and RBAC, query and schema design. Location: ${site.location}.`;
 
 export default function Hero() {
   return (
@@ -62,8 +49,8 @@ export default function Hero() {
         )}
       </div>
 
-      <TerminalWindow title="whoami.sh" className="mt-14 shadow-2xl shadow-black/40">
-        <TerminalScript lines={terminalScript} srSummary={terminalSrSummary} />
+      <TerminalWindow title="whoami.sh — type 'help'" className="mt-14 shadow-2xl shadow-black/40">
+        <Terminal />
       </TerminalWindow>
     </section>
   );
