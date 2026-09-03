@@ -47,13 +47,15 @@ export const projects: Project[] = [
     status: "shipped",
   },
   {
-    slug: "secure-task-management-api",
-    title: "Secure Task Management API",
+    slug: "task-manager-api",
+    title: "Task Manager API",
     description:
-      "RESTful backend with JWT authentication and role-based access control for secure task management. Built for efficient task tracking and filtering, with modularity for frontend integration.",
-    stack: ["Node.js", "Express", "MySQL", "JWT"],
-    category: "node",
-    year: "2024",
+      "REST API for managing tasks, built with Spring Boot — CRUD endpoints, request validation, centralized error handling, seed data, and automated tests. Containerized with Docker and CI-checked on every push via GitHub Actions, with interactive Swagger docs. (Live demo runs on Render's free tier — first load can take ~30-60s to wake up.)",
+    stack: ["Java", "Spring Boot", "Spring Data JPA", "Docker", "GitHub Actions", "Swagger / OpenAPI"],
+    category: "java",
+    year: "2026",
+    repoUrl: "https://github.com/Denyy2/task-manager",
+    liveUrl: "https://task-manager-efge.onrender.com/swagger-ui/index.html",
     status: "shipped",
   },
   {
