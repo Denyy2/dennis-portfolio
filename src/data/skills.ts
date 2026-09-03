@@ -10,19 +10,27 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Backend",
-    items: ["Spring Boot", "Express.js", "Node.js", "Hibernate / JPA"],
+    items: [
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Security",
+      "Microservices",
+      "Express.js",
+      "Node.js",
+      "Hibernate / JPA",
+    ],
   },
   {
     label: "Databases",
-    items: ["MySQL"],
+    items: ["MySQL", "PostgreSQL"],
   },
   {
     label: "API & Security",
-    items: ["REST API Design", "JWT Authentication", "RBAC", "Middleware"],
+    items: ["REST API Design", "JWT Authentication", "RBAC", "Middleware", "Swagger / OpenAPI"],
   },
   {
     label: "DevOps & Tools",
-    items: ["Docker", "AWS EC2", "AWS S3", "Git", "Linux", "Postman", "Maven"],
+    items: ["Docker", "AWS EC2", "AWS S3", "Jenkins", "Git", "Linux", "Postman", "Maven"],
   },
   {
     label: "Testing",
