@@ -9,7 +9,6 @@ export const site = {
   roles: [
     "Backend Engineer",
     "Java / Spring Boot Developer",
-    "Node.js / Express Developer",
     "Full-Stack Capable",
   ],
   tagline:
