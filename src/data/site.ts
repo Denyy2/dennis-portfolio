@@ -20,10 +20,8 @@ export const site = {
   phoneHref: "+918178265370",
   linkedin: "https://linkedin.com/in/dennis-e-abraham212",
   linkedinLabel: "dennis-e-abraham212",
-  // TODO(Dennis): add your GitHub profile URL — the nav/contact links stay hidden until this is set.
-  github: "",
-  githubLabel: "",
-  // TODO(Dennis): drop a resume PDF into /public/resume.pdf and set this to "/resume.pdf".
-  resumeUrl: "",
+  github: "https://github.com/Denyy2",
+  githubLabel: "Denyy2",
+  resumeUrl: "/resume.pdf",
   availability: "Open to new opportunities",
 } as const;
