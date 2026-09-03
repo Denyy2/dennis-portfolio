@@ -8,7 +8,7 @@ export const experience: ExperienceEntry[] = [
     start: "Aug 2024",
     end: "Present",
     bullets: [
-      "Built and maintained backend services across two stacks — Java/Spring Boot for airline booking & loyalty systems, and Node.js/Express for task-management and e-commerce microservices.",
+      "Developed and maintained microservice-based backend services for airline booking and loyalty workflows using Java and Spring Boot, ensuring transactional consistency under concurrent requests.",
       "Owned loyalty module features: member profiles, points accrual, tier status management, and eligibility validation.",
       "Designed RESTful APIs and modular middleware, securing endpoints with JWT authentication and role-based access control (RBAC).",
       "Designed and optimized MySQL schemas for passenger, booking, loyalty, user, product, and order data.",
