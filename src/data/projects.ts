@@ -39,12 +39,14 @@ export const projects: Project[] = [
     slug: "tc-summarization-app",
     title: "T&C Summarization App",
     description:
-      "Web app that distills dense terms & conditions using the OpenAI API. An OCR pipeline extracts text from PDFs and images, and a clean REST API handles upload and summary generation.",
-    stack: ["Python", "OpenAI API", "OCR", "REST APIs"],
+      "Web app that turns dense terms & conditions into a plain-English summary using the Gemini API. PDFs are read directly where possible and OCR'd via Tesseract when they're scans; images always go through OCR. Per-visitor and daily rate limits keep it running safely on a free-tier API budget. (Live demo runs on Render's free tier — first load can take ~30-60s to wake up.)",
+    stack: ["Flask", "Gemini API", "PyMuPDF", "Tesseract OCR", "Docker"],
     category: "ai",
-    year: "2025",
+    year: "2026",
     featured: true,
     status: "shipped",
+    repoUrl: "https://github.com/Denyy2/tc-summarizer",
+    liveUrl: "https://tc-summarizer.onrender.com/",
   },
   {
     slug: "task-manager-api",
