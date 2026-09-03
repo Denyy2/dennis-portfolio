@@ -37,11 +37,7 @@ const COMMAND_LIST = [
   "education",
   "contact",
   "resume",
-  "github",
-  "linkedin",
   "clear",
-  "whoami",
-  "ls",
 ];
 
 function out(text: string, tone?: "accent" | "muted"): Line {
@@ -66,17 +62,12 @@ function runCommand(raw: string): { lines: Line[]; clear?: boolean } {
           out("  education   academic background"),
           out("  contact     how to reach me"),
           out("  resume      open résumé PDF"),
-          out("  github      open GitHub profile"),
-          out("  linkedin    open LinkedIn profile"),
           out("  clear       clear the terminal"),
         ],
       };
 
     case "about":
       return { lines: [out(site.bio)] };
-
-    case "whoami":
-      return { lines: [out(`${site.name} — ${site.role}`, "accent")] };
 
     case "skills":
       return {
@@ -128,18 +119,6 @@ function runCommand(raw: string): { lines: Line[]; clear?: boolean } {
       if (!site.resumeUrl) return { lines: [out("No résumé linked yet.", "muted")] };
       if (typeof window !== "undefined") window.open(site.resumeUrl, "_blank", "noopener,noreferrer");
       return { lines: [out("Opening résumé in a new tab…", "accent")] };
-
-    case "github":
-      if (!site.github) return { lines: [out("GitHub link isn't set yet.", "muted")] };
-      if (typeof window !== "undefined") window.open(site.github, "_blank", "noopener,noreferrer");
-      return { lines: [out("Opening GitHub profile in a new tab…", "accent")] };
-
-    case "linkedin":
-      if (typeof window !== "undefined") window.open(site.linkedin, "_blank", "noopener,noreferrer");
-      return { lines: [out("Opening LinkedIn profile in a new tab…", "accent")] };
-
-    case "ls":
-      return { lines: [out("about  skills  experience  projects  education  contact")] };
 
     case "clear":
       return { lines: [], clear: true };
