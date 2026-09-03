@@ -14,7 +14,7 @@ export const site = {
   ],
   tagline:
     "I build backend systems that stay correct under concurrency — and this site is built full-stack to prove I can ship the other half too.",
-  bio: "Backend engineer at TCS with 1.5+ years shipping production APIs across two stacks — Java/Spring Boot for airline booking & loyalty systems, and Node.js/Express for task-management and e-commerce services. I care about transactional consistency, clean API design, and systems that don't break under retries.",
+  bio: "Backend engineer at TCS with 2+ years shipping production APIs in Java and Spring Boot — building airline booking & loyalty systems that stay consistent under concurrent load. I care about transactional consistency, clean API design, and systems that don't break under retries.",
   location: "Kerala, India",
   email: "dennisabraham651@gmail.com",
   phone: "+91 8178 265 370",
