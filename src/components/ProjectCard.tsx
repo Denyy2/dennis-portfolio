@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import type { Project } from "@/data/types";
 
 const CATEGORY_LABEL: Record<Project["category"], string> = {
@@ -8,6 +11,9 @@ const CATEGORY_LABEL: Record<Project["category"], string> = {
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const [showChallenges, setShowChallenges] = useState(false);
+  const hasChallenges = !!project.challenges?.length;
+
   return (
     <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-lg shadow-black/10 transition-all hover:-translate-y-1 hover:border-accent-2/50 hover:shadow-xl hover:shadow-black/30">
       <div className="mb-3 flex items-center justify-between">
@@ -35,7 +41,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
 
-      <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+      <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-border pt-4">
         {project.repoUrl ? (
           <a
             href={project.repoUrl}
@@ -64,7 +70,34 @@ export default function ProjectCard({ project }: { project: Project }) {
             Live demo →
           </a>
         )}
+        {hasChallenges && (
+          <button
+            type="button"
+            onClick={() => setShowChallenges((v) => !v)}
+            aria-expanded={showChallenges}
+            className="ml-auto font-mono text-xs font-semibold text-muted transition-colors hover:text-foreground"
+          >
+            Challenges {showChallenges ? "▴" : "▾"}
+          </button>
+        )}
       </div>
+
+      {hasChallenges && showChallenges && (
+        <div className="mt-4 space-y-3 border-t border-border pt-4">
+          {project.challenges!.map((c, i) => (
+            <div key={i} className="text-sm leading-relaxed">
+              <p className="text-foreground">
+                <span className="font-mono text-xs font-semibold text-accent-warn">Problem: </span>
+                {c.problem}
+              </p>
+              <p className="mt-1 text-muted">
+                <span className="font-mono text-xs font-semibold text-accent">Solution: </span>
+                {c.solution}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

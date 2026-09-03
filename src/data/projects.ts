@@ -47,6 +47,26 @@ export const projects: Project[] = [
     status: "shipped",
     repoUrl: "https://github.com/Denyy2/tc-summarizer",
     liveUrl: "https://tc-summarizer.onrender.com/",
+    challenges: [
+      {
+        problem:
+          "The default model choice, gemini-3.6-flash, took 60-90s per request in testing — an unusable wait for a live demo, and long enough to exceed the server's default request timeout.",
+        solution:
+          "Isolated the cause by testing each request-config field separately and found the model spends an uncontrollable chunk of its token budget on internal \"thinking\" it doesn't support disabling. Switched to gemini-flash-lite-latest, which cut response time to 1-20s with no drop in summary quality.",
+      },
+      {
+        problem:
+          "The summarizer runs on one shared free-tier API key behind a public URL — one heavy visitor, or a bot, could burn the entire day's quota for everyone.",
+        solution:
+          "Added two rate-limit layers: a per-IP cap (10 requests/10 min) and a global daily cap (150/day) that only counts requests that actually reach the model, so invalid input doesn't waste quota. Verified live by firing 11 rapid requests and confirming the 11th got a real 429.",
+      },
+      {
+        problem:
+          "Needed to handle both real text PDFs and scanned/image PDFs through one upload endpoint, without adding heavy system dependencies that complicate deployment.",
+        solution:
+          "Used PyMuPDF to try direct text extraction per page first, falling back to Tesseract OCR only for pages with little/no extractable text. This avoided needing Poppler (the usual dependency for rendering PDF pages to images), so the Docker image only needs one extra system package.",
+      },
+    ],
   },
   {
     slug: "task-manager-api",

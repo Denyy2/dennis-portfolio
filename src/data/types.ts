@@ -1,6 +1,13 @@
 // Shared content types. Keeping these in one file means every data file
 // (projects, experience, skills…) is type-checked the same way.
 
+export interface Challenge {
+  /** The real problem you hit — specific enough to defend in an interview. */
+  problem: string;
+  /** What you actually did about it, and the result (numbers/timings help). */
+  solution: string;
+}
+
 export interface Project {
   /** Unique, url-safe id. Used as the React key and for future /projects/[slug] pages. */
   slug: string;
@@ -17,6 +24,13 @@ export interface Project {
   liveUrl?: string;
   featured?: boolean;
   status?: "shipped" | "in-progress";
+  /**
+   * Real problems you hit building this and how you solved them — only add
+   * ones you actually lived through, since this is exactly what an
+   * interviewer will ask you to expand on. Omit entirely if none are
+   * written up yet; the card just won't show a "Challenges" toggle.
+   */
+  challenges?: Challenge[];
 }
 
 export interface ExperienceEntry {
