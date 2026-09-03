@@ -51,6 +51,29 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
+/* Accessible, theme-consistent keyboard focus ring (replaces the default browser outline). */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Faint fixed grid, fading toward the bottom of the viewport — adds depth without noise.
+   Placed first in the DOM (see layout.tsx) with no z-index, so normal stacking order
+   alone keeps real content painted on top of it — avoids negative-z-index edge cases. */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(74, 222, 128, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 35%, transparent 100%);
+}
+
 /* Subtle scroll-reveal used by <Reveal>. No-JS / reduced-motion users just see content immediately. */
 .reveal {
   opacity: 0;

@@ -9,7 +9,7 @@ const CATEGORY_LABEL: Record<Project["category"], string> = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent-2/50">
+    <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-lg shadow-black/10 transition-all hover:-translate-y-1 hover:border-accent-2/50 hover:shadow-xl hover:shadow-black/30">
       <div className="mb-3 flex items-center justify-between">
         <span className="rounded-full border border-border bg-surface-2 px-2.5 py-0.5 font-mono text-[11px] text-accent-2">
           {CATEGORY_LABEL[project.category]}

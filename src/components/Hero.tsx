@@ -1,6 +1,20 @@
 import { site } from "@/data/site";
 import TerminalWindow from "./TerminalWindow";
+import TerminalScript, { type ScriptLine } from "./TerminalScript";
 import TypedRole from "./TypedRole";
+
+const terminalScript: ScriptLine[] = [
+  { kind: "cmd", text: "whoami" },
+  { kind: "out", text: `${site.name} — ${site.role}`, tone: "accent" },
+  { kind: "blank" },
+  { kind: "cmd", text: "cat focus.txt" },
+  { kind: "out", text: "Transactional APIs · Auth & RBAC · Query & schema design" },
+  { kind: "blank" },
+  { kind: "cmd", text: "location --current" },
+  { kind: "out", text: site.location },
+];
+
+const terminalSrSummary = `${site.name} — ${site.role}. Focus areas: transactional APIs, auth and RBAC, query and schema design. Location: ${site.location}.`;
 
 export default function Hero() {
   return (
@@ -48,24 +62,8 @@ export default function Hero() {
         )}
       </div>
 
-      <TerminalWindow title="whoami.sh" className="mt-14">
-        <pre className="overflow-x-auto font-mono text-sm leading-relaxed">
-          <code>
-            <span className="text-accent">$</span> whoami
-            {"\n"}
-            <span className="text-accent-2">{site.name}</span> — {site.role}
-            {"\n\n"}
-            <span className="text-accent">$</span> cat focus.txt
-            {"\n"}
-            <span className="text-muted">
-              Transactional APIs · Auth & RBAC · Query & schema design
-            </span>
-            {"\n\n"}
-            <span className="text-accent">$</span> location
-            {"\n"}
-            <span className="text-muted">{site.location}</span>
-          </code>
-        </pre>
+      <TerminalWindow title="whoami.sh" className="mt-14 shadow-2xl shadow-black/40">
+        <TerminalScript lines={terminalScript} srSummary={terminalSrSummary} />
       </TerminalWindow>
     </section>
   );
