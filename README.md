@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dennis E Abraham — Portfolio
 
-## Getting Started
+**Live:** [dennis-portfolio-ten.vercel.app](https://dennis-portfolio-ten.vercel.app/)
 
-First, run the development server:
+A full-stack developer portfolio with a terminal/dev-themed UI — including an actually interactive
+terminal in the hero (type `help`).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+Next.js (App Router) · TypeScript · Tailwind CSS 4 · deployed on Vercel
+
+## Adding a new project
+
+All content lives in `src/data/*.ts` — no markup changes needed. To add a project, add an entry to
+`src/data/projects.ts`:
+
+```ts
+{
+  slug: "my-new-project",
+  title: "My New Project",
+  description: "What it does and the interesting part of how, in 1-3 sentences.",
+  stack: ["Java", "Spring Boot", "PostgreSQL"],
+  category: "java",       // "java" | "node" | "ai" | "other"
+  year: "2026",
+  repoUrl: "https://github.com/you/repo",   // omit until the repo is public
+  liveUrl: "https://your-demo.vercel.app",  // omit if there's no hosted demo
+  status: "shipped",      // "shipped" | "in-progress"
+},
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Commit and push — Vercel redeploys automatically. Leaving `repoUrl`/`liveUrl` out is supported: the
+project card shows a "Repo coming soon" pill instead of a dead link. The site shows the first 4
+projects in full; a 5th+ project reveals behind a "Show more" toggle.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other editable data files: `site.ts` (identity/contact), `skills.ts`, `experience.ts`, `education.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local development
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000).

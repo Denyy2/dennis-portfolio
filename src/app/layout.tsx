@@ -15,9 +15,9 @@ const jbMono = JetBrains_Mono({
   display: "swap",
 });
 
-// TODO(Dennis): once deployed, set NEXT_PUBLIC_SITE_URL (Vercel project settings)
-// to the real domain so shared links resolve correctly.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+// Falls back to the live Vercel URL; override with NEXT_PUBLIC_SITE_URL (Vercel
+// project settings) if a custom domain is added later.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dennis-portfolio-ten.vercel.app";
 const title = `${site.name} — ${site.role}`;
 
 export const metadata: Metadata = {
